@@ -6,8 +6,8 @@ JavaSE-1.8
 repo: https://github.com/margarettam/SiteMinderSendingEmail.git
 site: http://13.237.196.250:8080/SpringBootMail/
 
-The configure file of email servers is at 
-SiteMinderSendingEmail/src/main/resources/application.properties
+The configure file of email servers is at following path, change accordingly
+classpath/src/main/resources/application.properties
 
 Build steps
 1. git clone https://github.com/margarettam/SiteMinderSendingEmail.git
