@@ -9,7 +9,7 @@
     <groupId>SiteMinder</groupId>
     <artifactId>SpringBootMail</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
  
     <name>SpringBootMail</name>
     <description>Spring Boot + Mail</description>
