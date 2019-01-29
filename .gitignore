@@ -24,4 +24,3 @@
 /.nb-gradle/
 /build/
 src/main/resources/applicationReal.properties
-src/main/resources/application.properties
