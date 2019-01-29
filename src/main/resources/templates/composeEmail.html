@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Compose Email</title>
+      <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+      <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>                    
+      <script th:src="@{/jquery/jquery.min.js}"></script>  
+      <script th:src="@{/popper/popper.min.js}"></script>  
+      <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>      
+      <script th:src="@{/js/loadingoverlay.js}"></script>      
+      <script th:src="@{/js/composeEmail.js}"></script>      
+	</head>
+   <body>
+      <h1>Compose an email</h1>            
+      <form id="composeEmailForm" th:action="@{sendEmail}" th:object="${emailForm}" method="POST" >
+		  <div class="col-sm-6">
+			  <div class="form-group">
+			    <label>Recipients *</label>		    
+				<div class="input-group input-group-md">						
+					<input id="txtSendTo" type="text" th:field="*{sendTo}" class="form-control" aria-describedby="emailHelp" placeholder="Please enter email" data-error="Email is required.">				
+				</div>
+				<p class="msgBlock" th:if="${#fields.hasErrors('sendTo')}" th:errors="*{sendTo}" style="color:red;font-style:italic"></p>				
+			    <div class="help-block with-errors"></div>
+			  </div>
+			  <div class="form-group">
+			    <label>CCs</label>		    
+				<div class="input-group input-group-md">			
+					<input id="txtCC" type="text" th:field="*{cc}" class="form-control" placeholder="CCs">
+				</div>
+				<p class="msgBlock" th:if="${#fields.hasErrors('cc')}" th:errors="*{cc}" style="color:red;font-style:italic"></p>				
+			    <div class="help-block with-errors"></div>
+			  </div>
+			  <div class="form-group">
+			    <label>BCCs</label>		    
+				<div class="input-group input-group-md">			
+					<input id="txtBCC" type="text" th:field="*{bcc}" class="form-control" placeholder="BCCs">
+				</div>
+				<p class="msgBlock" th:if="${#fields.hasErrors('bcc')}" th:errors="*{bcc}" style="color:red;font-style:italic"></p>
+			    <div class="help-block with-errors"></div>
+			  </div>		  
+			  <div class="form-group">
+			    <label>Subject *</label>		    
+				<div class="input-group input-group-md">			
+					<input th:field="*{subject}" type="text" class="form-control" placeholder="Please enter subject" data-error="Subject is required." >
+				</div>
+				<p class="msgBlock" th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}" style="color:red;font-style:italic"></p>
+			    <div class="help-block with-errors"></div>
+			  </div>		  
+		  </div>
+		  <div class="col-sm-6">
+			<div class="form-group">
+				<label>Message *</label>
+				<textarea th:field="*{message}" class="form-control" rows="3" data-error="Message is required." ></textarea>				
+			</div>
+			<p class="msgBlock" th:if="${#fields.hasErrors('message')}" th:errors="*{message}" style="color:red;font-style:italic"></p>
+			<div class="help-block with-errors"></div>
+			<div id="composeEmailBtnGrp" class="col-sm-4 form-group loadingOverlay">	    	
+		    	<button id="composeEmailSubmitBtn" type="submit" class="btn btn-success">Send</button>
+		    	<button id="composeEmailClearBtn" type="button" onclick="return false;" class="btn btn-success">Clear</button>		    		    	
+		  	</div>		  	
+		  </div>
+		  <div class="col-sm-6">
+		  	<div class="msgBlock" th:if="${errorMessage!=null}" style="color:red;font-style:italic" th:utext="${errorMessage}">..</div>
+		  	<div class="msgBlock" th:if="${resultMessage!=null}" style="color:green;font-style:italic" th:utext="${resultMessage}">..</div>		  	
+		  </div>		       
+		</form>
+		
+	
+   </body>
+</html>
